@@ -1,0 +1,202 @@
+body {
+    width: 100%;
+    height: auto;
+    background: url('../img/bg.png') no-repeat;
+    background-size: 100% 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei";
+}
+.prize_body {
+    width: 1200px;
+    margin: 615px auto 0;
+    overflow: hidden;
+    .title {
+        background: url('../img/title1.png') no-repeat;
+        background-position: center;
+        width: 100%;
+        height: 100px;
+    }
+    .sudoku {
+        float: left;
+        width: 700px;
+        background: url('../img/prize_container.png') no-repeat;
+        background-position: center;
+        height: 800px;
+        position: relative;
+        .start_btn{
+          position: absolute;
+          left: 550px;
+          top: 190px;
+          cursor: pointer;
+        }
+        .prize_list {
+            width: 374px;
+            overflow: hidden;
+            margin-left: 116px;
+            margin-top: 34px;
+            .item {
+                float: left;
+                width: 119px;
+                height: 121px;
+                margin: 4px;
+                border-radius: 2px;
+            }
+            .prize_01 {
+                background: url('../img/prize1.png') no-repeat;
+                background-position: center;
+                background-color: #f7edc2;
+                margin-bottom: 0px;
+            }
+            .prize_02 {
+                background: url('../img/prize2.png') no-repeat;
+                background-position: center;
+                background-color: #f7edc2;
+                margin: 4px 0 0 0;
+            }
+            .prize_03 {
+                background: url('../img/prize3.png') no-repeat;
+                background-position: center;
+                background-color: #f7edc2;
+                margin-bottom: 0px;
+            }
+            .prize_04 {
+                background: url('../img/prize4.png') no-repeat;
+                background-position: center;
+                background-color: #f7edc2;
+                margin-bottom: 0px;
+            }
+            .prize_05 {
+                background: url('../img/prize5.png') no-repeat;
+                background-position: center;
+                background-color: #f7edc2;
+                margin: 4px 0 0 0;
+            }
+            .prize_06 {
+                background: url('../img/prize6.png') no-repeat;
+                background-position: center;
+                background-color: #f7edc2;
+                margin-bottom: 0px;
+            }
+            .prize_07 {
+                background: url('../img/prize7.png') no-repeat;
+                background-position: center;
+                background-color: #f7edc2;
+            }
+            .prize_08 {
+                background: url('../img/prize8.png') no-repeat;
+                background-position: center;
+                background-color: #f7edc2;
+                margin: 4px 0;
+            }
+            .prize_09 {
+                background: url('../img/prize9.png') no-repeat;
+                background-position: center;
+                background-color: #f7edc2;
+            }
+            .active{
+              background-color: #ffffff;
+            }
+        }
+        .rest_chance {
+            font-size: 24px;
+            color: #333333;
+            line-height: 44px;
+            margin-top: 85px;
+            margin-left: 200px;
+            span{
+              display: inline-block;
+              background-color: #fbd011;
+              color: #ed3c03;
+              width: 37px;
+              height: 44px;
+              text-align: center;
+            }
+        }
+        .getChance_btn {
+            position: absolute;
+            left: 110px;
+            bottom: 130px;
+        }
+    }
+    .rule {
+        float: left;
+        width: 500px;
+        background: url('../img/rule.png') no-repeat;
+        background-position: center;
+        height: 800px;
+    }
+}
+.winner_container {
+    clear: both;
+    width: 1200px;
+    margin: 0 auto;
+    .title {
+        background: url('../img/title2.png') no-repeat;
+        background-position: center;
+        width: 100%;
+        height: 100px;
+        margin: 0 auto;
+        position: relative;
+    }
+    .winner_list {
+        width: 600px;
+        float: left;
+        box-sizing: border-box;
+        margin-top: 35px;
+    }
+    .list_th {
+        width: 100%;
+        background-color: #fbd011;
+        height: 60px;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+    .prize_name,
+    .prize_time,
+    .user_name {
+        float: left;
+        text-align: center;
+        line-height: 60px;
+        color: #782906;
+        font-size: 20px;
+    }
+    .user_name {
+        width: 30%;
+    }
+    .prize_name {
+        width: 40%;
+    }
+    .prize_time {
+        width: 30%;
+    }
+    .list_table {
+        padding-bottom: 30px;
+        margin-bottom: 45px;
+        background-color: #fff0a5;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+    .list_td {
+        background-color: #fff0a5;
+        overflow: hidden;
+        border-bottom: 1px dashed #cbb44c;
+    }
+}
+.inquiry_btn {
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.prize_footer {
+    width: 100%;
+    background-color: #e03104;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #ffffff;
+}
