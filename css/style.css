@@ -1,0 +1,288 @@
+body {
+  width: 100%;
+  height: auto;
+  background: url("../img/bg.png") no-repeat;
+  background-size: 100% 100%;
+  background-color: #ed3a02;
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei"; }
+
+.hide {
+  display: none; }
+
+map area {
+  outline: none; }
+
+img {
+  border: 0 none; }
+
+@-webkit-keyframes rotating {
+  0% {
+    background-position: -100px top; }
+  50% {
+    background-position: 20px 20px; } }
+
+@keyframes rotating {
+  0% {
+    background-position: -100px top; }
+  50% {
+    background-position: 20px 20px; } }
+
+.prize_body {
+  width: 1200px;
+  margin: 615px auto 0;
+  overflow: hidden; }
+  .prize_body .title {
+    background: url("../img/title1.png") no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100px; }
+  .prize_body .sudoku {
+    float: left;
+    width: 700px;
+    background: url("../img/prize_container.png") no-repeat;
+    background-position: 40px center;
+    height: 800px;
+    position: relative; }
+    .prize_body .sudoku .start_btn {
+      position: absolute;
+      left: 524px;
+      top: 190px;
+      cursor: pointer; }
+    .prize_body .sudoku .figer {
+      position: absolute;
+      left: 586px;
+      top: 310px;
+      width: 90px;
+      height: 120px;
+      background: url("../img/figer.png") no-repeat;
+      background-position: -100px top;
+      animation: rotating 1s step-end infinite;
+      -webkit-animation: rotating 1s step-end infinite;
+      -moz-animation: rotating 1s step-end infinite;
+      -ms-animation: rotating 1s step-end infinite;
+      -o-animation: rotating 1s step-end infinite; }
+    .prize_body .sudoku .prize_list {
+      width: 374px;
+      overflow: hidden;
+      margin-left: 90px;
+      margin-top: 34px; }
+      .prize_body .sudoku .prize_list .item {
+        float: left;
+        width: 119px;
+        height: 121px;
+        margin: 4px;
+        border-radius: 2px; }
+      .prize_body .sudoku .prize_list .prize_01 {
+        background: url("../img/prize1.png") no-repeat;
+        background-position: center;
+        background-color: #f7edc2;
+        margin-bottom: 0; }
+      .prize_body .sudoku .prize_list .prize_02 {
+        background: url("../img/prize2.png") no-repeat;
+        background-position: center;
+        background-color: #f7edc2;
+        margin: 4px 0 0; }
+      .prize_body .sudoku .prize_list .prize_03 {
+        background: url("../img/prize3.png") no-repeat;
+        background-position: center;
+        background-color: #f7edc2;
+        margin-bottom: 0; }
+      .prize_body .sudoku .prize_list .prize_04 {
+        background: url("../img/prize4.png") no-repeat;
+        background-position: center;
+        background-color: #f7edc2;
+        margin-bottom: 0; }
+      .prize_body .sudoku .prize_list .prize_05 {
+        background: url("../img/prize5.png") no-repeat;
+        background-position: center;
+        background-color: #f7edc2;
+        margin: 4px 0 0; }
+      .prize_body .sudoku .prize_list .prize_06 {
+        background: url("../img/prize6.png") no-repeat;
+        background-position: center;
+        background-color: #f7edc2;
+        margin-bottom: 0; }
+      .prize_body .sudoku .prize_list .prize_07 {
+        background: url("../img/prize7.png") no-repeat;
+        background-position: center;
+        background-color: #f7edc2; }
+      .prize_body .sudoku .prize_list .prize_08 {
+        background: url("../img/prize8.png") no-repeat;
+        background-position: center;
+        background-color: #f7edc2;
+        margin: 4px 0; }
+      .prize_body .sudoku .prize_list .prize_09 {
+        background: url("../img/prize9.png") no-repeat;
+        background-position: center;
+        background-color: #f7edc2; }
+      .prize_body .sudoku .prize_list .active {
+        background-color: #ffffff; }
+    .prize_body .sudoku .rest_chance {
+      font-size: 24px;
+      color: #333333;
+      line-height: 44px;
+      margin-top: 85px;
+      margin-left: 175px; }
+      .prize_body .sudoku .rest_chance span {
+        display: inline-block;
+        background-color: #fbd011;
+        color: #ed3c03;
+        width: 37px;
+        height: 44px;
+        text-align: center;
+        border-radius: 5px; }
+    .prize_body .sudoku .getChance_btn {
+      position: absolute;
+      left: 84px;
+      bottom: 130px; }
+  .prize_body .rule {
+    float: left;
+    width: 500px;
+    background: url("../img/rule.png") no-repeat;
+    background-position: center;
+    height: 800px; }
+
+.winner_record {
+  clear: both;
+  width: 1200px;
+  margin: 0 auto; }
+  .winner_record .title {
+    background: url("../img/title2.png") no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    position: relative; }
+    .winner_record .title .my_result, .winner_record .title .all_result {
+      position: absolute;
+      right: 20px;
+      bottom: 0;
+      text-decoration: underline;
+      color: #fbd011;
+      cursor: pointer; }
+  .winner_record .winner_container {
+    margin-bottom: 45px;
+    background-color: #fff0a5;
+    margin-top: 35px;
+    border-radius: 5px;
+    overflow: hidden; }
+  .winner_record .winner_list {
+    width: 600px;
+    float: left;
+    box-sizing: border-box; }
+  .winner_record .list_th {
+    width: 100%;
+    background-color: #fbd011;
+    height: 60px;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box; }
+  .winner_record .prize_name,
+  .winner_record .prize_time,
+  .winner_record .user_name {
+    float: left;
+    text-align: center;
+    line-height: 60px;
+    color: #782906;
+    font-size: 20px; }
+  .winner_record .user_name {
+    width: 30%; }
+  .winner_record .prize_name {
+    width: 40%;
+    color: #ed3c03; }
+  .winner_record .prize_time {
+    width: 30%; }
+  .winner_record .list_table {
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    height: 488px;
+    overflow: hidden; }
+  .winner_record .list_td {
+    background-color: #fff0a5;
+    overflow: hidden;
+    border-bottom: 1px dashed #cbb44c; }
+  .winner_record .page_tab {
+    margin: 0 auto;
+    width: 500px;
+    clear: both;
+    margin-bottom: 20px;
+    text-align: center; }
+    .winner_record .page_tab .page_num, .winner_record .page_tab .next_page, .winner_record .page_tab .prev_page {
+      cursor: pointer;
+      background-color: #f6e58e;
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 3px; }
+    .winner_record .page_tab .page_num {
+      margin-left: 15px; }
+    .winner_record .page_tab .next_page {
+      margin-left: 15px; }
+    .winner_record .page_tab .page_active {
+      background-color: #ed3a02;
+      color: white; }
+
+.inquiry_btn {
+  width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 50px; }
+
+.prize_footer {
+  width: 100%;
+  background-color: #e03104;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff; }
+
+.right_fixed {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: 620px;
+  margin-top: -180px;
+  width: 170px; }
+  .right_fixed .go_top {
+    cursor: pointer; }
+
+.mask_layer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-user-select: none;
+  z-index: 1024;
+  background: url("../img/shadows.png") no-repeat;
+  background-size: cover; }
+  .mask_layer .prize_box {
+    width: 610px;
+    height: 428px;
+    background: url("../img/prize_box.png") no-repeat;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -305px;
+    margin-left: -214px; }
+    .mask_layer .prize_box .now_prize {
+      margin: 100px auto 0;
+      color: #ed3a02;
+      font-weight: bold;
+      width: 300px;
+      text-align: center; }
+    .mask_layer .prize_box .sureBtn {
+      width: 340px;
+      height: 65px;
+      line-height: 65px;
+      color: #ffffff;
+      text-align: center;
+      background-color: #ed3a02;
+      border-radius: 5px;
+      margin: 200px auto 0;
+      cursor: pointer; }

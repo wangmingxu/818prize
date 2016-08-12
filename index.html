@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>818抽奖</title>
+    <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+    <div class="right_fixed">
+        <img src="img/right_fixed.png" alt="" width="170" usemap="#right_map" />
+        <map name="right_map">
+            <area shape="rect" coords="0,100,169,156" target="_blank" href="/index.html" alt="" hidefocus="true">
+        </map>
+        <img src="img/go_top.png" alt="" width="170" class="go_top hide"/>
+    </div>
+    <div class="prize_body">
+        <div class="title">
+        </div>
+        <div class="sudoku">
+            <div class="start_btn">
+                <img src="img/start.png" alt="" />
+                <img src="img/cant_start.png" alt="" class="hide"/>
+            </div>
+            <div class="figer hide">
+
+            </div>
+            <div class="rest_chance">
+                你还有
+                <span class="count"></span> 次抽奖机会
+            </div>
+            <div class="prize_list">
+                <div class="item prize_01 tab-0" title="20元优惠劵">
+                  <!-- 20元优惠劵 -->
+                </div>
+                <div class="item prize_02 tab-7" title="长隆水上乐园门票1张">
+                  <!-- 长隆水上乐园门票 -->
+                </div>
+                <div class="item prize_03 tab-2" title="电影票一张">
+                  <!-- 电影票一张 -->
+                </div>
+                <div class="item prize_04 tab-5" title="100元话费">
+                  <!-- 100元话费 -->
+                </div>
+                <div class="item prize_05 tab-4" title="车载小冰箱1个">
+                  <!-- 车载小冰箱 -->
+                </div>
+                <div class="item prize_06 tab-6" title="车载吸尘空气净化器1个">
+                  <!-- 空气净化器 -->
+                </div>
+                <div class="item prize_07 tab-3" title="面膜1盒">
+                  <!-- 面膜 -->
+                </div>
+                <div class="item prize_08 tab-8" title="海洋王国门票1张">
+                  <!-- 海洋王国 -->
+                </div>
+                <div class="item prize_09 tab-1">
+                  <!-- 30元话费 -->
+                </div>
+            </div>
+            <div class="getChance_btn">
+                <a href="/inquiry/publishInquiry.html"><img src="img/getChance.png" alt="" /></a>
+            </div>
+        </div>
+        <div class="rule">
+
+        </div>
+    </div>
+    <div class="winner_record">
+        <div class="title">
+            <span class="my_result">我的中奖纪录</span>
+            <span class="all_result hide">所有中奖纪录</span>
+        </div>
+        <div class="winner_container">
+        <script type="text/template" id="winnerList_tpl">
+          <div class="winner_list">
+              <div class="list_th" style="border-radius: 5px 0px 0px 0px;border-right: 1px solid #ebd671;">
+                  <div class="user_name">
+                      用户名
+                  </div>
+                  <div class="prize_name">
+                      奖品
+                  </div>
+                  <div class="prize_time">
+                      获奖时间
+                  </div>
+              </div>
+              <div class="list_table" style="border-radius: 0px 0px 0px 5px;border-right: 1px solid #ebd671;">
+                  <% _.each(List.slice(0,9),function(item,i){ %>
+                  <div class="list_td">
+                      <div class="user_name">
+                          <%= item.orgName %>
+                      </div>
+                      <div class="prize_name">
+                          <%= item.activityPrizeName %>
+                      </div>
+                      <div class="prize_time">
+                          <%= item.createTime %>
+                      </div>
+                  </div>
+                  <% }) %>
+              </div>
+          </div>
+          <div class="winner_list">
+              <div class="list_th" style="border-radius: 0px 5px 0px 0px;">
+                  <div class="user_name">
+                      用户名
+                  </div>
+                  <div class="prize_name">
+                      奖品
+                  </div>
+                  <div class="prize_time">
+                      获奖时间
+                  </div>
+              </div>
+              <div class="list_table" style="border-radius: 0px 0px 5px 0px;">
+                <% _.each(List.slice(8,17),function(item,i){ %>
+                <div class="list_td">
+                    <div class="user_name">
+                        <%= item.orgName %>
+                    </div>
+                    <div class="prize_name">
+                        <%= item.activityPrizeName %>
+                    </div>
+                    <div class="prize_time">
+                        <%= item.createTime %>
+                    </div>
+                </div>
+                <% }) %>
+
+              </div>
+          </div>
+        </script>
+        <script type="text/template" id="pageTab_tpl">
+          <% var totalPage=Math.ceil(totalSize/16); %>
+          <div class="page_tab">
+             <span class="prev_page">上一页</span>
+             <% for (var i = 0; i < totalPage; i++) { %>
+             <span class="page_num" data-pageindex="<%= i %>"><%= i+1 %></span>
+             <% } %>
+             <span class="next_page">下一页</span>
+          </div>
+        </script>
+      </div>
+    </div>
+    <div class="inquiry_btn">
+        <a href="/inquiry/publishInquiry.html"><img src="img/toInquiry.png" alt="" /></a>
+    </div>
+    <div class="prize_footer">
+        增值电信业务经营许可证：粤B2-20130752|粤ICP备13075378号-3| Copyright © 2013-2016 巴图鲁公司版权所有
+    </div>
+    <div class="mask_layer hide">
+        <div class="prize_box">
+            <div class="now_prize">
+
+            </div>
+            <div class="sureBtn">
+                确定
+            </div>
+        </div>
+    </div>
+    <script src="https://static.qipeipu.com/repair/v1.0.0/js/jq.min.js" charset="utf-8"></script>
+    <script src="js/underscore-min.js" charset="utf-8"></script>
+    <script src="js/sudoku.js" charset="utf-8"></script>
+    <script src="js/prize.js" charset="utf-8"></script>
+</body>
+
+</html>
