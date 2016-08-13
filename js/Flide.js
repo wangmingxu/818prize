@@ -68,10 +68,13 @@
         var Flide = function(element, option) {
             this._option = this._getOption(option);
             this._$element = $(element);
+            this._$item= this._$element.find("[data-role='item']");
+            this._$prev_btn=$("[data-role='prev']");
+            this._$next_btn=$("[data-role='next']");
             this._$element.data(FLIDE_KEY, this);
             this.nowFocus = Default.initfocus;
             this.leftMax = 0;
-            this.rightMax = this._$element.find("[data-role='item']").length - 1;
+            this.rightMax = this._$item.length - 1;
             this.sPicCount = this._option.showPicCount - 1;
             this.mLeft = 0;
             this.mRight = this._option.showPicCount - 1;
@@ -121,11 +124,11 @@
             this.judgeMax();
             this.judgeSlide("next");
             var speed = this._option.speed;
-            this._$element.find("[data-role='item']").eq(this.nowFocus - 1).animate({
+            this._$item.eq(this.nowFocus - 1).animate({
                 width: this._option.sPicWidth + "px",
                 height: this._option.sPicHeight + "px"
             }, speed);
-            this._$element.find("[data-role='item']").eq(this.nowFocus).animate({
+            this._$item.eq(this.nowFocus).animate({
                 width: this._option.bPicWidth + "px",
                 height: this._option.bPicHeight + "px"
             }, speed);
@@ -136,11 +139,11 @@
             this.judgeMax();
             this.judgeSlide("prev");
             var speed = this._option.speed;
-            this._$element.find("[data-role='item']").eq(this.nowFocus + 1).animate({
+            this._$item.eq(this.nowFocus + 1).animate({
                 width: this._option.sPicWidth + "px",
                 height: this._option.sPicHeight + "px"
             }, speed);
-            this._$element.find("[data-role='item']").eq(this.nowFocus).animate({
+            this._$item.eq(this.nowFocus).animate({
                 width: this._option.bPicWidth + "px",
                 height: this._option.bPicHeight + "px"
             }, speed);
@@ -152,11 +155,11 @@
             this.judgeMax();
             this.judgeSlide("tabTo");
             var speed = this._option.speed;
-            this._$element.find("[data-role='item']").eq(oldFocus).animate({
+            this._$item.eq(oldFocus).animate({
                 width: this._option.sPicWidth + "px",
                 height: this._option.sPicHeight + "px"
             }, speed);
-            this._$element.find("[data-role='item']").eq(this.nowFocus).animate({
+            this._$item.eq(this.nowFocus).animate({
                 width: this._option.bPicWidth + "px",
                 height: this._option.bPicHeight + "px"
             }, speed);
@@ -186,8 +189,6 @@
                     this.mRight=this.nowFocus;
                     break;
                 case "tabTo":
-                    // this.mLeft = (this.nowFocus - this.sPicCount) < this.leftMax ? this.leftMax : this.nowFocus - this.sPicCount;
-                    // this.mRight = (this.nowFocus + this.sPicCount) > this.rightMax ? this.rightMax : this.nowFocus + this.sPicCount;
                     if(this.nowFocus<this.mLeft){
                       this.mLeft=this.nowFocus;
                       this.mRight=this.mLeft+this.sPicCount;
@@ -199,24 +200,24 @@
                     break;
             }
             var speed = this._option.speed;
-            this._$element.find("[data-role='item']").eq(0).animate({
+            this._$item.eq(0).animate({
                 marginLeft: Offset
             }, speed);
         };
 
         Flide.prototype.judgeMax = function() {
             var leftMax = 0;
-            var rightMax = this._$element.find("[data-role='item']").length - 1;
+            var rightMax = this._$item.length - 1;
             var speed = this._option.speed;
             if (this.nowFocus == this.leftMax) {
-                $("[data-role='prev']").hide();
+                this._$prev_btn.hide();
             } else {
-                $("[data-role='prev']").show();
+                this._$prev_btn.show();
             }
             if (this.nowFocus == this.rightMax) {
-                $("[data-role='next']").hide();
+                this._$next_btn.hide();
             } else {
-                $("[data-role='next']").show();
+                this._$next_btn.show();
             }
         };
 
