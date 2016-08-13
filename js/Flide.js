@@ -52,7 +52,7 @@
         JQUERY_NO_CONFLICT = $.fn[NAME];
 
     var Default = {
-        initfocus: 1, //默认焦点第一张
+        initfocus: 0, //默认焦点第一张
         sPicWidth: 310, //非焦点图宽度
         sPicHeight: 218, //非焦点图宽度
         bPicWidth: 418, //焦点图宽度
@@ -112,7 +112,7 @@
             if (this.nowFocus < this._option.showPicCount) {
                 return 0;
             }
-            var leftOffset = -(this.nowFocus - this._option.showPicCount + 1) * this._option.sPicWidth;
+            var leftOffset = -(this.nowFocus - this._option.showPicCount + 1) * (this._option.sPicWidth+this._option.picMargin);
             return leftOffset;
         };
 
@@ -178,16 +178,24 @@
             }
             switch (type) {
                 case "prev":
-                    this.mLeft--;
+                    this.mLeft=this.nowFocus;
                     this.mRight--;
                     break;
                 case "next":
                     this.mLeft++;
-                    this.mRight++;
+                    this.mRight=this.nowFocus;
                     break;
                 case "tabTo":
-                    this.mLeft = (this.nowFocus - this.sPicCount) < this.leftMax ? this.leftMax : this.nowFocus - this.sPicCount;
-                    this.mRight = (this.nowFocus + this.sPicCount) > this.rightMax ? this.rightMax : this.nowFocus + this.sPicCount;
+                    // this.mLeft = (this.nowFocus - this.sPicCount) < this.leftMax ? this.leftMax : this.nowFocus - this.sPicCount;
+                    // this.mRight = (this.nowFocus + this.sPicCount) > this.rightMax ? this.rightMax : this.nowFocus + this.sPicCount;
+                    if(this.nowFocus<this.mLeft){
+                      this.mLeft=this.nowFocus;
+                      this.mRight=this.mLeft+this.sPicCount;
+                    }
+                    if(this.nowFocus>this.mRight){
+                      this.mLeft=this.mRight-this.sPicCount;
+                      this.mRight=this.nowFocus;
+                    }
                     break;
             }
             var speed = this._option.speed;
