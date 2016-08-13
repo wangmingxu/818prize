@@ -98,7 +98,12 @@ img {
     font-weight: bold;
     color: #bb0c29;
     cursor: pointer;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none; }
   .week_body .prev_btn {
     left: 0px; }
   .week_body .next_btn {

@@ -69,17 +69,18 @@
             this._option = this._getOption(option);
             this._$element = $(element);
             this._$element.data(FLIDE_KEY, this);
-            this.nowFocus = this._option.initfocus;
+            this.nowFocus = Default.initfocus; //
             this.leftMax = 0;
             this.rightMax = this._$element.find("[data-role='item']").length - 1;
-            this.mLeft = (this.nowFocus - 2) < this.leftMax ? this.leftMax : this.nowFocus - 2;
-            this.mRight = (this.nowFocus + 2) > this.rightMax ? this.rightMax : this.nowFocus + 2;
+            this.sPicCount = this._option.showPicCount - 1;
+            this.mLeft = (this.nowFocus - this.sPicCount) < this.leftMax ? this.leftMax : this.nowFocus - this.sPicCount; //
+            this.mRight = (this.nowFocus + this.sPicCount) > this.rightMax ? this.rightMax : this.nowFocus + this.sPicCount; //
             this._init(this.nowFocus);
         };
 
         Flide.prototype._init = function() {
             // this._calcWidth();
-            this.tabTo(this.nowFocus);
+            this.tabTo(this._option.initfocus);
             this._initEventHandle();
         };
 
@@ -140,14 +141,24 @@
             }, speed);
         };
         Flide.prototype.tabTo = function(i) {
-
+            var oldFocus = this.nowFocus;
+            this.nowFocus = i;
+            this.judgeMax();
+            this.judgeSlide("tabTo");
+            var speed = this._option.speed;
+            this._$element.find("[data-role='item']").eq(oldFocus).animate({
+                width: this._option.sPicWidth + "px",
+                height: this._option.sPicHeight + "px"
+            }, speed);
+            this._$element.find("[data-role='item']").eq(this.nowFocus).animate({
+                width: this._option.bPicWidth + "px",
+                height: this._option.bPicHeight + "px"
+            }, speed);
         };
         Flide.prototype.judgeSlide = function(type) {
             var Offset = this._calcOffset() + "px";
             var nowFocus = this.nowFocus;
             if (nowFocus >= this.mLeft && nowFocus <= this.mRight) {
-                $("[data-role='next']").show();
-                $("[data-role='prev']").show();
                 return;
             }
             switch (type) {
@@ -158,6 +169,10 @@
                 case "next":
                     this.mLeft++;
                     this.mRight++;
+                    break;
+                case "tabTo":
+                    this.mLeft = (this.nowFocus - this.sPicCount) < this.leftMax ? this.leftMax : this.nowFocus - this.sPicCount;
+                    this.mRight = (this.nowFocus + this.sPicCount) > this.rightMax ? this.rightMax : this.nowFocus + this.sPicCount;
                     break;
             }
             var speed = this._option.speed;
@@ -171,8 +186,13 @@
             var speed = this._option.speed;
             if (this.nowFocus == this.leftMax) {
                 $("[data-role='prev']").fadeOut(speed);
-            } else if (this.nowFocus == this.rightMax) {
+            } else {
+                $("[data-role='prev']").show();
+            }
+            if (this.nowFocus == this.rightMax) {
                 $("[data-role='next']").fadeOut(speed);
+            }else {
+                $("[data-role='next']").show();
             }
         };
         Flide.prototype._getOption = function(option) {
