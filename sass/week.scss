@@ -10,6 +10,13 @@ body {
     font-family: "Microsoft YaHei";
     position: relative;
 }
+*{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
 p{
   margin: 0px;
 }
@@ -109,11 +116,6 @@ img {
     color: #bb0c29;
     cursor: pointer;
     box-sizing: border-box;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
   }
   .prev_btn{
     left: 0px;
