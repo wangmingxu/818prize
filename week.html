@@ -26,31 +26,38 @@
               >
             </div>
             <div class="slide_list">
+              <div class="pic_container">
               <div class="item" data-role="item">
-                <img src="img/week1_prize.png" alt="" />
+                <img src="img/week1_prize.png" alt="" draggable="false"/>
                 <p class="pic_week">第一周</p>
                 <p class="week_time">第一周（8.19~9.1）</p>
               </div>
               <div class="item" data-role="item">
-                <img src="img/week2_prize.png" alt="" />
+                <img src="img/week2_prize.png" alt="" draggable="false"/>
                 <p class="pic_week">第二周</p>
+                <p class="week_time">第二周（8.19~9.1）</p>
               </div>
               <div class="item" data-role="item">
-                <img src="img/week3_prize.png" alt="" />
+                <img src="img/week3_prize.png" alt="" draggable="false"/>
                 <p class="pic_week">第三周</p>
+                <p class="week_time">第三周（8.19~9.1）</p>
               </div>
               <div class="item" data-role="item">
-                <img src="img/week4_prize.png" alt="" />
+                <img src="img/week4_prize.png" alt="" draggable="false"/>
                 <p class="pic_week">第四周</p>
+                <p class="week_time">第四周（8.19~9.1）</p>
               </div>
               <div class="item" data-role="item">
-                <img src="img/week5_prize.png" alt="" />
+                <img src="img/week5_prize.png" alt="" draggable="false"/>
                 <p class="pic_week">第五周</p>
+                <p class="week_time">第五周（8.19~9.1）</p>
               </div>
               <div class="item" data-role="item">
-                <img src="img/week6_prize.png" alt="" />
+                <img src="img/week6_prize.png" alt="" draggable="false"/>
                 <p class="pic_week">第六周</p>
+                <p class="week_time">第六周（8.19~9.1）</p>
               </div>
+            </div>
             </div>
           </div>
           <div class="master_msg">
@@ -69,6 +76,12 @@
           增值电信业务经营许可证：粤B2-20130752|粤ICP备13075378号-3| Copyright © 2013-2016 巴图鲁公司版权所有
       </div>
       <script src="https://static.qipeipu.com/repair/v1.0.0/js/jq.min.js" charset="utf-8"></script>
-      <script src="js/Flide.js" charset="utf-8"></script>
+      <script src="js/Flide_v1.js" charset="utf-8"></script>
+      <script type="text/javascript">
+        $(".slide_list").Flide();
+        $(".slide_list .item").on("active",function(){
+          console.log($(this).index());
+        })
+      </script>
     </body>
 </html>

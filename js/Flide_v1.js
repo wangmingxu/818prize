@@ -4,13 +4,15 @@
 /**
   默认html模板
   <div class="slide_list">
-    <div class="item" data-role="item">
-      <img1>
+    <div class="pic_container">
+      <div class="item" data-role="item">
+        <img1>
+      </div>
+      <div class="item" data-role="item">
+        <img2>
+      </div>
+      ...
     </div>
-    <div class="item" data-role="item">
-      <img2>
-    </div>
-    ...
   </div>
  */
 /*
@@ -18,17 +20,17 @@
 .slide_list{
   overflow: hidden;
   *width:optionCalc();
-  display: flex;
-  justify-content:space-between;
-  align-items:center;
-  .item{
-    flex-shrink:0;
-    *margin-right: option;
-    *width: option;
-    *height: option;
-    img{
-      width: 100%;
-      height: 100%;
+  .pic_container{
+    *width:optionCalc();
+    .item{
+      float: left;
+      *margin-right: option;
+      *width: option;
+      *height: option;
+      img{
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }
@@ -47,7 +49,7 @@
 })(this, function($) {
 
     var NAME = "Flide",
-        VERSION = "1.0.0",
+        VERSION = "1.0.1",
         FLIDE_KEY = 'flide',
         DATA_KEY = 'mx-flide',
         JQUERY_NO_CONFLICT = $.fn[NAME];
@@ -62,6 +64,8 @@
         showPicCount: 3, //容器内最多显示3张
         speed: 200, //滑动速度
         focusClass:'item_focus',//焦点图添加Class
+        focusEvent:"active",//焦点图触发事件
+        blurEvent:"no_active"//焦点取消触发事件
     };
 
     var Flide = (function($) {
@@ -117,11 +121,10 @@
                 leftOffset;
             nowFocus=this.nowFocus;
             showPicCount=this._option.showPicCount;
-            itemWidth=this._option.sPicWidth+this._option.picMargin;
             if(this.mLeft===0){
               return 0;
             }
-            leftOffset=nowFocus<showPicCount?-(nowFocus)*itemWidth:-(nowFocus - showPicCount + 1) * itemWidth;
+            leftOffset=nowFocus<showPicCount?nowFocus:(nowFocus - showPicCount + 1);
             return leftOffset;
         };
 
@@ -131,14 +134,16 @@
             this.judgeSlide("next");
             var speed = this._option.speed;
             var focusClass=this._option.focusClass;
+            var focusEvent=this._option.focusEvent;
+            var blurEvent=this._option.blurEvent;
             this._$item.eq(this.nowFocus - 1).animate({
                 width: this._option.sPicWidth + "px",
                 height: this._option.sPicHeight + "px"
-            }, speed).removeClass(focusClass);
+            }, speed).removeClass(focusClass).trigger(blurEvent);
             this._$item.eq(this.nowFocus).animate({
                 width: this._option.bPicWidth + "px",
                 height: this._option.bPicHeight + "px"
-            }, speed).addClass(focusClass);
+            }, speed).addClass(focusClass).trigger(focusEvent);
         };
 
         Flide.prototype.prev = function() {
@@ -147,14 +152,16 @@
             this.judgeSlide("prev");
             var speed = this._option.speed;
             var focusClass=this._option.focusClass;
+            var focusEvent=this._option.focusEvent;
+            var blurEvent=this._option.blurEvent;
             this._$item.eq(this.nowFocus + 1).animate({
                 width: this._option.sPicWidth + "px",
                 height: this._option.sPicHeight + "px"
-            }, speed).removeClass(focusClass);
+            }, speed).removeClass(focusClass).trigger(blurEvent);
             this._$item.eq(this.nowFocus).animate({
                 width: this._option.bPicWidth + "px",
                 height: this._option.bPicHeight + "px"
-            }, speed).addClass(focusClass);
+            }, speed).addClass(focusClass).trigger(focusEvent);
         };
 
         Flide.prototype.tabTo = function(i) {
@@ -164,14 +171,16 @@
             this.judgeSlide("tabTo");
             var speed = this._option.speed;
             var focusClass=this._option.focusClass;
+            var focusEvent=this._option.focusEvent;
+            var blurEvent=this._option.blurEvent;
             this._$item.eq(oldFocus).animate({
                 width: this._option.sPicWidth + "px",
                 height: this._option.sPicHeight + "px"
-            }, speed).removeClass(focusClass);
+            }, speed).removeClass(focusClass).trigger(blurEvent);
             this._$item.eq(this.nowFocus).animate({
                 width: this._option.bPicWidth + "px",
                 height: this._option.bPicHeight + "px"
-            }, speed).addClass(focusClass);
+            }, speed).addClass(focusClass).trigger(focusEvent);
         };
 
         Flide.prototype.clickTo=function(e){
@@ -208,11 +217,16 @@
                     }
                     break;
             }
-            var Offset = this._calcOffset() + "px";
+            var Offset = this._calcOffset();
             var speed = this._option.speed;
-            this._$item.eq(0).animate({
-                marginLeft: Offset
-            }, speed);
+            var itemOffset=-(this._option.sPicWidth+this._option.picMargin)+"px";
+            this._$item.each(function(index, el) {
+              if(index<Offset){
+                $(el).animate({marginLeft:itemOffset}, speed);
+              }else {
+                $(el).animate({marginLeft:0}, speed);
+              }
+            });
         };
 
         Flide.prototype.judgeMax = function() {
