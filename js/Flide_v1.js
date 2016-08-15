@@ -140,10 +140,10 @@
                 width: this._option.sPicWidth + "px",
                 height: this._option.sPicHeight + "px"
             }, speed).removeClass(focusClass).trigger(blurEvent);
-            this._$item.eq(this.nowFocus).animate({
+            this._$item.eq(this.nowFocus).addClass(focusClass).animate({
                 width: this._option.bPicWidth + "px",
                 height: this._option.bPicHeight + "px"
-            }, speed).addClass(focusClass).trigger(focusEvent);
+            }, speed).trigger(focusEvent);
         };
 
         Flide.prototype.prev = function() {
@@ -158,10 +158,10 @@
                 width: this._option.sPicWidth + "px",
                 height: this._option.sPicHeight + "px"
             }, speed).removeClass(focusClass).trigger(blurEvent);
-            this._$item.eq(this.nowFocus).animate({
+            this._$item.eq(this.nowFocus).addClass(focusClass).animate({
                 width: this._option.bPicWidth + "px",
                 height: this._option.bPicHeight + "px"
-            }, speed).addClass(focusClass).trigger(focusEvent);
+            }, speed).trigger(focusEvent);
         };
 
         Flide.prototype.tabTo = function(i) {
@@ -177,10 +177,10 @@
                 width: this._option.sPicWidth + "px",
                 height: this._option.sPicHeight + "px"
             }, speed).removeClass(focusClass).trigger(blurEvent);
-            this._$item.eq(this.nowFocus).animate({
+            this._$item.eq(this.nowFocus).addClass(focusClass).animate({
                 width: this._option.bPicWidth + "px",
                 height: this._option.bPicHeight + "px"
-            }, speed).addClass(focusClass).trigger(focusEvent);
+            }, speed).trigger(focusEvent);
         };
 
         Flide.prototype.clickTo=function(e){

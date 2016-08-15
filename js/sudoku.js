@@ -169,6 +169,9 @@ $(function(){
             case 8:
                 sWord="海洋王国门票1张";
                 break;
+            case 14:
+                sWord="30元话费";
+                break;
         }
         $(".prize_box .now_prize").text(sWord);
         $(".mask_layer").show();
